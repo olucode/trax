@@ -13,7 +13,7 @@ class ValidateSong extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class ValidateSong extends FormRequest
     public function rules()
     {
         return [
-            
+            'title' => 'required|unique:songs,title',
+            'artist' => 'required',
+            'year' => 'required|numeric',
+            'producer' => 'required',
+            'image' => 'mimes:jpg,jpeg,png'
         ];
     }
 }
