@@ -57,7 +57,7 @@ class SongController extends Controller
             $file = $request->file('image');
             //$fileName = $randomNumber . '' . $file->getClientOriginalName(); //change the filename by appending the random number to the original file name
             //$file->storeAs('images', $fileName);   //store file on server
-            $fileName = $request->file('image')->store('images');
+            $fileName = $request->file('image')->move('/public/storage/images',str_random(20).".".$request->image->guessExtension());
             $data = [
                 'title' => $newSong['title'],
                 'artist' => $newSong['artist'],
