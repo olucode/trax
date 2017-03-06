@@ -15,7 +15,7 @@ class SongController extends Controller
      */
     public function index()
     {
-        $songs = Song::paginate(12);
+        $songs = Song::paginate(9);
         //return $songs;
         return view('songs.editAllSongs',compact('songs'));
     }
@@ -52,12 +52,7 @@ class SongController extends Controller
             return redirect('/songs/create')->withErrors($validator)->withInput();
         }
         else {
-            //return $request->file('image');
-            $randomNumber = rand(1, 10000); //get any random number
-            $file = $request->file('image');
-            //$fileName = $randomNumber . '' . $file->getClientOriginalName(); //change the filename by appending the random number to the original file name
-            //$file->storeAs('images', $fileName);   //store file on server
-            $fileName = $request->file('image')->move('/public/storage/images',str_random(20).".".$request->image->guessExtension());
+            $fileName = $request->file('image')->store('');
             $data = [
                 'title' => $newSong['title'],
                 'artist' => $newSong['artist'],
@@ -70,9 +65,7 @@ class SongController extends Controller
             ];
             Song::create($data);
             //return "Successful";
-            //return redirect('songs');
-
-            return view('trax.addSongSuccess', compact('data'));
+            return view('trax.addSongSuccess');
         }
     }
 
@@ -109,6 +102,7 @@ class SongController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $updatedSong = $request->all(); //get all form input
         $rules = [
         'title' => 'required',
