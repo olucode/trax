@@ -52,7 +52,7 @@ class SongController extends Controller
             return redirect('/songs/create')->withErrors($validator)->withInput();
         }
         else {
-            $fileName = $request->file('image')->store('');
+            $fileName = $request->file('image')->store('images');
             $data = [
                 'title' => $newSong['title'],
                 'artist' => $newSong['artist'],
