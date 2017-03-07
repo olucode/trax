@@ -8,11 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 class SongController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $songs = Song::paginate(9);
@@ -20,32 +16,21 @@ class SongController extends Controller
         return view('songs.editAllSongs',compact('songs'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //return "hello";
         return view('songs.create');
     }
 
-    /**
-     * Store a newly created song in the database.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
 
         $newSong = $request->all(); //get all form input
         $rules = [
-        'title' => 'required',
-        'artist' => 'required',
-        'year' => 'required|numeric',
-        'producer' => 'required'
+            'title' => 'required',
+            'artist' => 'required',
+            'year' => 'required|numeric',
+            'producer' => 'required'
         ];  //validation rules
         $validator = Validator::make($newSong,$rules);
         if ($validator->fails()) {
@@ -69,23 +54,11 @@ class SongController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //I'm using SImpleController@showSong since a user doesn't have to be logged in to view a song
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $song = Song::find($id); //returns instance(object)
@@ -93,22 +66,15 @@ class SongController extends Controller
         //return "Tomorrow!";
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
 
         $updatedSong = $request->all(); //get all form input
         $rules = [
-        'title' => 'required',
-        'artist' => 'required',
-        'year' => 'required|numeric',
-        'producer' => 'required'
+            'title' => 'required',
+            'artist' => 'required',
+            'year' => 'required|numeric',
+            'producer' => 'required'
         ];  //validation rules
         $validator = Validator::make($updatedSong,$rules);
         if ($validator->fails()) {
@@ -116,7 +82,7 @@ class SongController extends Controller
             //return redirect()->route('songs.edit',$id)->withErrors($validator);
         }
         else{
-            Song::find($id)->update($updatedSong); //update the song           
+            Song::find($id)->update($updatedSong); //update the song
             $song = Song::find($id);
             if ($updatedSong->hasFile('image')) {
                 $randomNumber = rand(1,10000); //get any random number
@@ -131,12 +97,6 @@ class SongController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
