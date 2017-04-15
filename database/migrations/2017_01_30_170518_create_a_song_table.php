@@ -21,8 +21,8 @@ class CreateASongTable extends Migration
             $table->string('year', 4);
             $table->string('genre')->nullable();
             $table->string('producer', 200);
-            $table->string('image');
-            $table->string('comment')->nullable();
+            $table->string('image')->default('images/default.jpg');
+            $table->text('comment')->nullable();
             $table->integer('rating')->nullable();
             $table->timestamps();
         });

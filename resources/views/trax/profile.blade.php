@@ -21,9 +21,11 @@
                     <div class="panel-heading">Dashboard</div>
                     <div class="panel-body">
                         <img class="profile-img" src="/storage/{{ Auth::user()->avatar }}"> <br><br>
-                        <p> Welcome {{ Auth::user()->name }}</p>
-                        <p> This is your profile. Yeah, it's pretty much empty... like your brain. </p>
-                        <p> According to your info, your email is {{ Auth::user()->email }} </p>
+                        <div>
+                            <p> Welcome {{ Auth::user()->name }}</p>
+                            <p> This is your profile. Yeah, it's pretty much empty... like your brain. </p>
+                            <p> According to your info, your email is {{ Auth::user()->email }} </p>
+                        </div>
                     </div>
                 </div>
             </div>

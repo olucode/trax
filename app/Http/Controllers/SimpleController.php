@@ -14,8 +14,8 @@ class SimpleController extends Controller
      */
     public function showIndex()
     {
-        $songs = Song::all();   //returns a Collection(object)
-        return view('trax.index', compact('songs'));
+        $songs = Song::orderBy('id', 'desc')->paginate(4);   //returns a Collection(object)
+        return view('trax.index')->with('songs', $songs);
     }
 
     /**
