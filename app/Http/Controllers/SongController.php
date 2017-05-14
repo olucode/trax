@@ -86,8 +86,9 @@ class SongController extends Controller
 
     }
 
-    public function destroy($id)
+    public function destroy(Song $song)
     {
-        //
+        $song->delete();
+        return redirect('/');
     }
 }
