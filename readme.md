@@ -6,7 +6,10 @@
 </p>
 
 ## About Trax
+
 Think [Goodreads](http://goodreads.com) or [Imdb](http://imdb.com), but for music.
+Discover others who share your taste in music, get recommendations, suggest awesome music for your friends, have discussions about your favourite artistes and genres, all on TRAX.
+This is an ongoing project, and I currently have no feasible launch date.
 
 ## License
 
