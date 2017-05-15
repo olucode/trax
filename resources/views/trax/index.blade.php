@@ -8,7 +8,7 @@
 		<h2> Popular This Week </h2>
 
 		<div class="row">
-			<div class="col-md-4 col-sm-6">
+			<div class="col-md-4">
 				<h3> Most Played </h3>
 				{{--@unless(empty($songs))
 					@for ($i = 0; $i < 3 ; $i++)
@@ -16,13 +16,13 @@
 					@endfor
 				@endunless--}}
 			</div>
-			<div class="col-md-4 col-sm-6">
+			<div class="col-md-4">
 				<h3> New Releases </h3>				
 				@for($i = 0; $i < 3; $i++ )
 					<p> <a href="{{ route('song', $songs[$i]->id) }}"> {{ $songs[$i]->title }} - {{ $songs[$i]->artist }}</a> </p>
 				@endfor
 			</div>
-			<div class="col-md-4 col-sm-6">
+			<div class="col-md-4">
 				<h3> Trending Discussions </h3>
 
 			</div>
