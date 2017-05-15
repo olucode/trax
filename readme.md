@@ -6,7 +6,7 @@
 </p>
 
 ## About Trax
-
+Think [Goodreads](http://goodreads.com) or [Imdb](http://imdb.com), but for music.
 
 ## License
 
