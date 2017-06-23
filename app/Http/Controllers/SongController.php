@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidateSong;
 use App\Song;
+use App\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -14,13 +15,14 @@ class SongController extends Controller
     {
         $songs = Song::paginate(9);
         //return $songs;
-        return view('songs.editAllSongs',compact('songs'));
+        return view('songs.editAllSongs', compact('songs'));
     }
 
     public function create()
     {
         //return "hello";
-        return view('songs.create');
+        $genres = Genre::all();
+        return view('songs.create', compact('genres'));
     }
 
     public function store(ValidateSong $request)

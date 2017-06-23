@@ -16,10 +16,7 @@ class CreateGenresTable extends Migration
         Schema::create('genres', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('song_id')->unsigned();
             $table->timestamps();
-
-            $table->foreign('song_id')->references('id')->on('songs')->onDelete('cascade');
         });
     }
 

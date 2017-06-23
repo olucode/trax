@@ -5,7 +5,7 @@
 	<form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="{{ route('songs.store') }}">
 		{{ csrf_field() }}
 
-		<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+		<div class="form-group{{ $errors->has('name') ? 'has-error' : '' }}">
 			<label for="title" class="col-md-4 control-label"> Title of the Song </label>
 
 			<div class="col-md-6">
@@ -19,7 +19,7 @@
 			</div>
 		</div>
 
-		<div class="form-group{{ $errors->has('artist') ? ' has-error' : '' }}">
+		<div class="form-group{{ $errors->has('artist') ? 'has-error' : '' }}">
 			<label for="artist" class="col-md-4 control-label"> Artist  </label>
 
 			<div class="col-md-6 ">
@@ -33,7 +33,7 @@
 			</div>
 		</div>
 
-		<div class="form-group{{ $errors->has('album') ? ' has-error' : '' }}">
+		<div class="form-group{{ $errors->has('album') ? 'has-error' : '' }}">
 			<label for="album" class="col-md-4 control-label"> Album (Optional)  </label>
 
 			<div class="col-md-6 ">
@@ -47,7 +47,7 @@
 			</div>
 		</div>
 
-		<div class="form-group{{ $errors->has('producer') ? ' has-error' : '' }}">
+		<div class="form-group{{ $errors->has('producer') ? 'has-error' : '' }}">
 			<label for="producer" class="col-md-4 control-label"> Producer </label>
 
 			<div class="col-md-6 ">
@@ -76,9 +76,13 @@
 		</div>
 
 		<div class="form-group{{ $errors->has('genre') ? ' has-error' : '' }} ">
-			<label for="genre" class="col-md-4 control-label"> What's The Genre  </label>
+			<label for="genre_id" class="col-md-4 control-label"> What's The Genre  </label>
 			<div class="col-md-4">
-				<input id="genre" type="text" class="form-control" name="genre" value="{{ old('genre') }}" required>
+				<select class="form-control" name="genre_id">
+					@foreach($genres as $genre)
+						<option value="{{ $genre->id }}">{{ $genre->name }}</option>
+					@endforeach
+				</select>
 
 				@if ($errors->has('genre'))
 				<span class="help-block">
