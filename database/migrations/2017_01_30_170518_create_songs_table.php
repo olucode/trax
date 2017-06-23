@@ -17,13 +17,13 @@ class CreateSongsTable extends Migration
             $table->increments('id');
             $table->string('title', 250);
             $table->string('artist', 200);
-            $table->string('album', 200)->nullable();
             $table->string('year', 4);
             $table->string('producer', 200);
             $table->string('image')->default('images/default.jpg');
             $table->text('description')->nullable();
-            $table->integer('rating')->nullable();
+            $table->integer('rating')->nullable()->unsigned();
             $table->integer('genre_id')->unsigned();
+            $table->integer('album_id')->nullable()->unsigned();
             $table->timestamps();
         });
     }

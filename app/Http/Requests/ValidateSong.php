@@ -26,8 +26,9 @@ class ValidateSong extends FormRequest
         return [
             'title' => 'required|unique:songs,title',
             'artist' => 'required',
-            'year' => 'required|numeric',
+            'year' => 'required|integer',
             'producer' => 'required',
+            'genre_id' => 'required|integer' ,
             'image' => 'mimes:jpg,jpeg,png'
         ];
     }

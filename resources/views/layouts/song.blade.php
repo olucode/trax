@@ -10,7 +10,7 @@
 					<p>
 						<a href="#" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-thumbs-up"></span></a> &nbsp; 
 						<a href="#" class="btn btn-default" role="button"><span class="glyphicon glyphicon-thumbs-down"></span></a> &nbsp;
-						@if(Auth::user()->status == "admin")
+						@if(Auth::user()->is_admin)
 							<a class="btn btn-danger" href="{{ route('songs.edit', $song['id']) }}"><span class="glyphicon glyphicon-pencil"></span></a>
 						@endif
 					</p>

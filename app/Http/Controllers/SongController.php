@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Validator;
 class SongController extends Controller
 {
 
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $songs = Song::paginate(9);
@@ -33,11 +37,10 @@ class SongController extends Controller
         $data = [
             'title' => $newSong['title'],
             'artist' => $newSong['artist'],
-            'album' => $newSong['album'],
             'year' => $newSong['year'],
             'producer' => $newSong['producer'],
             'comment' => $newSong['comment'],
-            'genre' => $newSong['genre'],
+            'genre' => $newSong['genre_id'],
             'image' => $fileName
         ];
         Song::create($data);

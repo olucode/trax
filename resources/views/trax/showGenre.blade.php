@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container-fluid">
-<h3> This is a list of all the genres on the site</h3>
-<h3> Select a genre to continue </h3>
+	<h3> This is a list of all the genres on the site</h3>
+	<h3> Select a genre to continue </h3>
 </div>
 <div class="container-fluid">
 	<div class="row">

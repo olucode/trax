@@ -33,20 +33,6 @@
 			</div>
 		</div>
 
-		<div class="form-group{{ $errors->has('album') ? 'has-error' : '' }}">
-			<label for="album" class="col-md-4 control-label"> Album (Optional)  </label>
-
-			<div class="col-md-6 ">
-				<input id="album" type="text" class="form-control" name="album" value="{{ old('album') }}">
-
-				@if ($errors->has('album'))
-				<span class="help-block">
-					<strong>{{ $errors->first('album') }}</strong>
-				</span>
-				@endif
-			</div>
-		</div>
-
 		<div class="form-group{{ $errors->has('producer') ? 'has-error' : '' }}">
 			<label for="producer" class="col-md-4 control-label"> Producer </label>
 
