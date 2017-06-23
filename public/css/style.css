@@ -1,0 +1,9 @@
+.navbar-profile-img{
+	width: 32px;
+	height: 32px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	border-radius: 50%;
+	padding-bottom: 5px;
+}

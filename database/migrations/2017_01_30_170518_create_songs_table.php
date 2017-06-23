@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateASongTable extends Migration
+class CreateSongsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -19,11 +19,11 @@ class CreateASongTable extends Migration
             $table->string('artist', 200);
             $table->string('album', 200)->nullable();
             $table->string('year', 4);
-            $table->string('genre')->nullable();
             $table->string('producer', 200);
             $table->string('image')->default('images/default.jpg');
-            $table->text('comment')->nullable();
+            $table->text('description')->nullable();
             $table->integer('rating')->nullable();
+            $table->integer('genre_id')->unsigned();
             $table->timestamps();
         });
     }
