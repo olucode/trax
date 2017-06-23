@@ -40,7 +40,7 @@ class SongController extends Controller
             'year' => $newSong['year'],
             'producer' => $newSong['producer'],
             'comment' => $newSong['comment'],
-            'genre' => $newSong['genre_id'],
+            'genre_id' => $newSong['genre_id'],
             'image' => $fileName
         ];
         Song::create($data);
