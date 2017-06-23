@@ -1,16 +1,12 @@
-@extends('layouts.navbar')
+@extends('layouts.master')
 
-
-{{-- Below Section is user-defined by Me.--}}
 @section('title')
     <title> Register</title>
 @endsection
 
-{{--  To eliminate repetition of the register link at the top right corner  --}}
-{{-- @section('top-right')
-<li><a href="{{ url('/login') }}">Login</a></li>
-@show --}}
-{{-- End --}}
+@section('top-right')
+    <li><a href="{{ url('/login') }}">Login</a></li>
+@endsection
 
 @section('content')
     <div class="container">

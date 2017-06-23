@@ -1,26 +1,18 @@
 @extends('layouts.master')
 
-
 {{-- Start Main Body Content  --}}
 @section('content')
 <div>
 	<div class="container-fluid no-spacing">
-		<h2> Popular This Week </h2>
+		<h2 class="text-center"> Popular This Week </h2>
 
 		<div class="row">
 			<div class="col-md-4">
 				<h3> Most Played </h3>
-				{{--@unless(empty($songs))
-					@for ($i = 0; $i < 3 ; $i++)
-						<h4> {{ ($i + 1)}}. {{ $songs[$i]->artist }} - {{ $songs[$i]->title }} </h4>
-					@endfor
-				@endunless--}}
+
 			</div>
 			<div class="col-md-4">
 				<h3> New Releases </h3>				
-				@for($i = 0; $i < 3; $i++ )
-					<p> <a href="{{ route('song', $songs[$i]->id) }}"> {{ $songs[$i]->title }} - {{ $songs[$i]->artist }}</a> </p>
-				@endfor
 			</div>
 			<div class="col-md-4">
 				<h3> Trending Discussions </h3>
@@ -32,7 +24,7 @@
 
 <div>
 	<div class="container-fluid no-spacing">
-		<h2> Daily Dose </h2>
+		<h2 class="text-center"> Daily Dose </h2>
 
 		<div class="row">
 			<div class="col-md-4  col-sm-6">
