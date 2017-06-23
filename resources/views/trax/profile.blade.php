@@ -2,15 +2,6 @@
 
 @section('stylesheet')
     @parent
-    <style type="text/css">
-        .profile-img {
-            width: 200px;
-            height: 200px;
-            border: 5px solid #ffffff;
-            border-radius: 50%;
-            box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-        }
-    </style>
 @endsection
 
 @section('content')
@@ -31,7 +22,7 @@
             </div>
         </div>
 
-        @if(Auth::user()->status == "admin")
+        @if(Auth::user()->is_admin)
             <div class="row">
                 <div class="col-md-4">
                     <div class="panel panel-primary">
