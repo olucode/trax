@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+
+	@include('layouts.partials._message')
+
 	<form class="form-horizontal" role="form" method="POST" enctype="multipart/form-data" action="{{ route('songs.store') }}">
 		{{ csrf_field() }}
 

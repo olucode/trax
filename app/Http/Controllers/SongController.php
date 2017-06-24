@@ -43,9 +43,14 @@ class SongController extends Controller
             'genre_id' => $newSong['genre_id'],
             'image' => $fileName
         ];
-        Song::create($data);
-        //return "Successful";
-        return view('trax.addSongSuccess');
+        $song = Song::create($data);
+        //Flash session data
+        session()->flash([
+            'success' => 'The Song was successfuly added to the Trax Library', 
+            'song' => $song
+        ])
+
+        return redirect()->route('songs.create');
 
     }
 

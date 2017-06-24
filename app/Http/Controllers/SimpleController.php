@@ -42,10 +42,9 @@ class SimpleController extends Controller
      */
     public function showSong($id)
     {
-        $song = Song::find($id);  //returns JSON 
+        $song = Song::find($id);  //returns Collection 
         //$song = Song::where('title', '=', $id)->get();
         return view('layouts.song', compact('song'));
-        //return "I have a song... ".$id;
     }
 
 }
