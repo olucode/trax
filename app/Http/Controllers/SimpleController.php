@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use \App\Song;
+use App\Song;
+use App\Genre;
 use Illuminate\Http\Request;
 
 class SimpleController extends Controller
@@ -24,8 +25,7 @@ class SimpleController extends Controller
      */
     public function listGenres()
     {
-        $genres = ['Hip Hop', 'Pop', 'Rap', 'AfroBeat', 'Electronic', 'Soul', 'Reggae', 'Heavy Metal'];
-        //$genres = Song::pluck('genre')->all();
+        $genres = Genre::all();
         return view('trax.showGenre', compact('genres'));
     }
 
@@ -35,11 +35,6 @@ class SimpleController extends Controller
         return view('trax.allSongsUnderGenre', compact(['songs', 'genre']));
     }
 
-    /**
-     *
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
     public function showSong($id)
     {
         $song = Song::find($id);  //returns Collection 
