@@ -6,6 +6,8 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class Homepagetest extends TestCase
 {
+
+    use DatabaseTransactions;
     /**
      * A basic test example.
      *
@@ -13,6 +15,8 @@ class Homepagetest extends TestCase
      */
     public function testExample()
     {
-        $this->assertTrue(true);
+        $this->visit('/')
+            ->assertViewHas('songs')
+            ->assertResponseOk();
     }
 }
