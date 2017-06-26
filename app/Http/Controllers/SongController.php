@@ -39,16 +39,14 @@ class SongController extends Controller
             'artist' => $newSong['artist'],
             'year' => $newSong['year'],
             'producer' => $newSong['producer'],
-            'comment' => $newSong['comment'],
+            'description' => $newSong['description'],
             'genre_id' => $newSong['genre_id'],
             'image' => $fileName
         ];
         $song = Song::create($data);
         //Flash session data
-        session()->flash([
-            'success' => 'The Song was successfuly added to the Trax Library', 
-            'song' => $song
-        ])
+        session()->flash('success', 'The Song was successfuly added to the Trax Library');
+        session()->flash('songId', $song->id);
 
         return redirect()->route('songs.create');
 
