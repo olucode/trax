@@ -44,11 +44,6 @@ class SongController extends Controller
 
     }
 
-    public function show($id)
-    {
-        //I'm using SimpleController@showSong since a user doesn't have to be logged in to view a song
-    }
-
     public function edit($id)
     {
         $song = Song::find($id); //returns instance(object)
