@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ValidateSong;
 use App\Song;
 use App\Genre;
 use Illuminate\Http\Request;
+use App\Http\Requests\ValidateSong;
 use Illuminate\Support\Facades\Validator;
 
 class SongController extends Controller
