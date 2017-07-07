@@ -3,8 +3,8 @@
 Route::get('/', 'SimpleController@showIndex');
 
 Route::get(
-    'songs/genre/{genre}',
-    ['as' => 'genre', 'uses' => 'SimpleController@listSongsUnderCategory']
+    'allgenres/{genre}',
+    ['as' => 'songsUnderGenre', 'uses' => 'SimpleController@listSongsUnderGenre']
 );
 Route::get('showSong/{id}', ['as' => 'song', 'uses' => 'SimpleController@showSong']);
 Route::get('profile', 'HomeController@showProfile');

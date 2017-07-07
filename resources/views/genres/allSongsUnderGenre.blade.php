@@ -7,8 +7,8 @@
   @unless (empty($songs))
   <div class="container-fluid">
     <div class="row">
-      <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
-        <h3> This is a list of all the tracks under {{ $genre }} </h3>  
+      <div class="text-center">
+        <h3> This is a list of all the tracks under {{ $genre->name }} </h3>  
       </div>
     </div>
   </div>
@@ -35,7 +35,6 @@
         </div>
       @endforeach
       </div>
-    {{ $songs->links() }}
     </div>
   </div>
 @stop

@@ -26,13 +26,14 @@ class SimpleController extends Controller
     public function listGenres()
     {
         $genres = Genre::all();
-        return view('trax.showGenre', compact('genres'));
+        return view('genres.showGenre', compact('genres'));
     }
 
-    public function listSongsUnderCategory($genre)
+    public function listSongsUnderGenre(Genre $genre)
     {
-        $songs = Song::where('genre', $genre)->paginate(6);  //returns a Collection (object)
-        return view('trax.allSongsUnderGenre', compact(['songs', 'genre']));
+        // $songs = Song::where('genre', $genre)->paginate(6);  //returns a Collection (object)
+        $songs = $genre->songs;
+        return view('genres.allSongsUnderGenre', compact(['songs', 'genre']));
     }
 
     public function showSong($id)

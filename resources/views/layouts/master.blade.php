@@ -16,11 +16,6 @@
 		<link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
 	@show
 
-	<script type="text/javascript">
-		$.ajaxSetup({
-			headers: {'X-CSRF-TOKEN':$('meta[name = "csrf-token"]').attr('content') }
-		});
-	</script>
 </head>
 
 <body>
@@ -32,9 +27,16 @@
 	@yield('content')
 	{{-- End body content here --}}
 
-</body>
+	<script type="text/javascript" src="{{ asset('js/jquery-3.1.1.js') }}"> </script>
+	<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}" ></script>
 
-<script type="text/javascript" src="{{ asset('js/jquery-3.1.1.js') }}"> </script>
-<script type="text/javascript" src="{{ asset('js/bootstrap.min.js') }}" ></script>
+	<script type="text/javascript">
+		$.ajaxSetup({
+			headers: {'X-CSRF-TOKEN':$('meta[name = "csrf-token"]').attr('content') }
+		});
+	</script>
+
+
+</body>
 
 </html>

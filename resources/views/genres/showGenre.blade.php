@@ -8,12 +8,14 @@
 <div class="container-fluid">
 	<div class="row">
 	@foreach ($genres as $genre)
-		<div class="col-md-2 col-sm-5 panel panel-default">
-			<a href="{{ route('genre',$genre) }}">
-			<div class="panel-body">
-				<h3> {{ $genre }} </h3>
+		<div class="col-md-2">
+			<div class="panel panel-default">
+				<a href="{{ route('songsUnderGenre', $genre->name) }}">
+				<div class="panel-body">
+					<h3> {{ $genre->name }} </h3>
+				</div>
+				</a>
 			</div>
-			</a>
 		</div>	
 	@endforeach
 	</div>
