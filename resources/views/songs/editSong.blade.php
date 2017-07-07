@@ -2,11 +2,11 @@
 
 @section('content')
 <div class="container">
-  <form class="form-horizontal" role="form" method="PUT" files="true" action="{{ route('songs.update',$song->id) }}">
+  <form class="form-horizontal" role="form" method="POST" files="true" action="{{ route('songs.update', $song->id) }}" enctype="multipart/form-data">
 
     {{ csrf_field() }}
     {{ method_field('PUT') }}
-    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+    <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
       <label for="title" class="col-md-4 control-label"> Title of the Song </label>
 
       <div class="col-md-6">
@@ -27,9 +27,9 @@
         <input id="artist" type="text" class="form-control" name="artist" value="{{ $song->artist }}" required>
 
         @if ($errors->has('artist'))
-        <span class="help-block">
-          <strong>{{ $errors->first('artist') }}</strong>
-        </span>
+          <span class="help-block">
+            <strong>{{ $errors->first('artist') }}</strong>
+          </span>
         @endif
       </div>
     </div>
@@ -77,23 +77,28 @@
     </div>
 
     <div class="form-group{{ $errors->has('genre') ? ' has-error' : '' }} ">
-      <label for="genre" class="col-md-4 control-label"> What's The Genre  </label>
+      <label for="genre_id" class="col-md-4 control-label"> Previous Genre: <span class="label label-info"> {{ $song->genre->name }} </span>
+      </label>
       <div class="col-md-4">
-        <input id="genre" type="text" class="form-control" name="genre" value="{{ $song->genre }}" required>
+        <select class="form-control" name="genre_id">
+          @foreach($genres as $genre)
+            <option value="{{ $genre->id }}">{{ $genre->name }}</option>
+          @endforeach
+        </select>
 
         @if ($errors->has('genre'))
-        <span class="help-block">
-          <strong>{{ $errors->first('genre') }}</strong>
-        </span>
+          <span class="help-block">
+            <strong>{{ $errors->first('genre') }}</strong>
+          </span>
         @endif        
       </div>
     </div>
 
     <div class="form-group">
-      <label for="comment" class="col-md-4 control-label"> Extra Info about the Song </label>
+      <label for="description" class="col-md-4 control-label"> Extra Info about the Song </label>
 
       <div class="col-md-4 ">
-        <textarea class="form-control" rows="4" name="comment" value=" {{ $song->comment }} " >  </textarea>
+        <textarea class="form-control" rows="4" name="description" value=" {{ $song->description }} " >  </textarea>
       </div>
     </div>
 

@@ -24,7 +24,6 @@ class SongController extends Controller
 
     public function create()
     {
-        //return "hello";
         $genres = Genre::all();
         return view('songs.create', compact('genres'));
     }
@@ -44,40 +43,36 @@ class SongController extends Controller
 
     }
 
-    public function edit($id)
+    public function edit(Song $song)
     {
-        $song = Song::find($id); //returns instance(object)
-        return view('songs.editSong', compact('song'));
+        $genres = Genre::all();
+        return view('songs.editSong', compact(['song', 'genres']));
         //return "Tomorrow!";
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Song $song)
     {
 
-        $updatedSong = $request->all(); //get all form input
         $rules = [
             'title' => 'required',
             'artist' => 'required',
             'year' => 'required|numeric',
             'producer' => 'required'
         ];  //validation rules
-        $validator = Validator::make($updatedSong,$rules);
-        if ($validator->fails()) {
-            return "Did not pass";
-            //return redirect()->route('songs.edit',$id)->withErrors($validator);
-        } else{
-            
-            $song = Song::find($id);
-            if ($updatedSong->hasFile('image')) {
-                $randomNumber = rand(1,10000); //get any random number
-                $file = $request->image;
-                $fileName = $randomNumber.''.$file->getClientOriginalName();
-                $file->storeAs('images',$fileName);
-                $song->image = $fileName;
-            }
-            $song->save();
-            return "Successful";
+
+        $this->validate($request, $rules);
+
+        $updatedSong = $request->all(); //get all form input
+
+        if ($request->hasFile('image')){
+            $fileName = $request->file('image')->store('images');
+            $updatedSong['image'] = $fileName;
         }
+        
+        // dd($updatedSong);
+        $song->update($updatedSong);
+
+        return redirect()->route('song', $song->id);
 
     }
 

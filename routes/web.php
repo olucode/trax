@@ -11,7 +11,7 @@ Route::get('profile', 'HomeController@showProfile');
 Route::get('allgenres', 'SimpleController@listGenres');
 //Route::get('songs/category/{genre}/{id}', 'SongController');
 
-Route::resource('songs', 'SongController');
+Route::resource('songs', 'SongController', ['except' => ['show']]);
 Route::resource('genres', 'GenreController');
 
 Route::auth();
