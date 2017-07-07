@@ -9,7 +9,8 @@
 
 Think [Goodreads](http://goodreads.com) or [Imdb](http://imdb.com), but for music.
 Discover others who share your taste in music, get recommendations, suggest awesome music for your friends, hold discussions about your favourite artistes and genres, create exclusive groups for those that share your taste, all on TRAX.
-This is an ongoing project, and I currently have no feasible launch date.
+Music authors can also submit their own content for uploading. 
+This is an ongoing project, and there's no launch date yet.
 
 ## License
 
