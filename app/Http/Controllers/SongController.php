@@ -34,16 +34,8 @@ class SongController extends Controller
 
         $newSong = $request->all(); //get all form input
         $fileName = $request->file('image')->store('images');
-        $data = [
-            'title' => $newSong['title'],
-            'artist' => $newSong['artist'],
-            'year' => $newSong['year'],
-            'producer' => $newSong['producer'],
-            'description' => $newSong['description'],
-            'genre_id' => $newSong['genre_id'],
-            'image' => $fileName
-        ];
-        $song = Song::create($data);
+        $newSong['image'] = $fileName;
+        $song = Song::create($newSong);
         //Flash session data
         session()->flash('success', 'The Song was successfuly added to the Trax Library');
         session()->flash('songId', $song->id);
