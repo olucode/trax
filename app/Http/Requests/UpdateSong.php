@@ -13,7 +13,7 @@ class UpdateSong extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return auth()->user()->is_admin;
     }
 
     /**
@@ -26,8 +26,9 @@ class UpdateSong extends FormRequest
         return [
             'title' => 'required',
             'artist' => 'required',
-            'year' => 'required|numeric',
-            'producer' => 'required'        
+            'year' => 'required|integer',
+            'producer' => 'required',
+            'image' => 'sometimes'       
         ];
     }
 }
