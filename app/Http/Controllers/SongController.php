@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use File;
 use Image;
 use App\Song;
 use App\Genre;
@@ -66,7 +67,17 @@ class SongController extends Controller
         $updatedSong = $request->all(); //get all form input
 
         if ($request->hasFile('image')){
-            $fileName = $request->file('image')->store('images');
+            // $fileName = $request->file('image')->store('images');
+            $path =  public_path('storage/');
+            $fileName = 'images/' . time(). '.' . $request->image->getClientOriginalExtension(); 
+            
+            Image::make($request->file('image')->getRealPath())->resize(280, 260, function ($constraint) {
+                    $constraint->upsize();
+            })->save($path . $fileName);
+
+            // Delete old image
+            File::delete( public_path('storage/' . $song->image) );
+
             $updatedSong['image'] = $fileName;
         }
         
