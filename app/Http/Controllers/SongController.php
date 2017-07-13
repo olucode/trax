@@ -6,6 +6,7 @@ use App\Song;
 use App\Genre;
 use Illuminate\Http\Request;
 use App\Http\Requests\ValidateSong;
+use App\Http\Requests\UpdateSong;
 use Illuminate\Support\Facades\Validator;
 
 class SongController extends Controller
@@ -50,17 +51,8 @@ class SongController extends Controller
         //return "Tomorrow!";
     }
 
-    public function update(Request $request, Song $song)
+    public function update(UpdateSong $request, Song $song)
     {
-
-        $rules = [
-            'title' => 'required',
-            'artist' => 'required',
-            'year' => 'required|numeric',
-            'producer' => 'required'
-        ];  //validation rules
-
-        $this->validate($request, $rules);
 
         $updatedSong = $request->all(); //get all form input
 
