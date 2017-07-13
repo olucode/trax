@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Image;
 use App\Song;
 use App\Genre;
 use Illuminate\Http\Request;
@@ -33,9 +34,18 @@ class SongController extends Controller
     {
 
         $newSong = $request->all(); //get all form input
-        $fileName = $request->file('image')->store('images');
+        
+        $path =  public_path('storage/');
+        $fileName = 'images/'.time().''.$request->image->getClientOriginalExtension(); 
+        
+        Image::make($request->file('image')->getRealPath())->resize(280, 260, function ($constraint) {
+                $constraint->upsize();
+        })->save($path . $fileName);
+
         $newSong['image'] = $fileName;
+
         $song = Song::create($newSong);
+        
         //Flash session data
         session()->flash('success', 'The Song was successfuly added to the Trax Library');
         session()->flash('songId', $song->id);
@@ -48,7 +58,6 @@ class SongController extends Controller
     {
         $genres = Genre::all();
         return view('songs.editSong', compact(['song', 'genres']));
-        //return "Tomorrow!";
     }
 
     public function update(UpdateSong $request, Song $song)
