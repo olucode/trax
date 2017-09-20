@@ -15,7 +15,8 @@
         "sven/artisan-view": "^1.3",
         "unisharp/laravel-filemanager": "^1.7",
         "spatie/laravel-activitylog": "^1.12",
-        "rap2hpoutre/laravel-log-viewer": "^0.9.0"
+        "rap2hpoutre/laravel-log-viewer": "^0.9.0",
+        "doctrine/dbal": "^2.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
